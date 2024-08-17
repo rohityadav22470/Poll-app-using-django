@@ -6,10 +6,14 @@
     <title>Polzzz App</title>
 </head>
 <body>
+    {% if questions %}
     <ul>
         {% for q in questions %}
-        <li><a href="/polls/{{q.id}}"/"> {{q.question}}</a></li>
+        <li><a href="{% url 'detail' question.id %}"> {{q.question}}</a></li>
         {% endfor %}
     </ul>
+    {% else %}
+    <p>No questions present.</p>
+    {% endif %}
 </body>
 </html>
