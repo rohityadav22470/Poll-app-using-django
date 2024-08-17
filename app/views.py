@@ -5,8 +5,8 @@ from .models import Question,choice
 # Create your views here.
 def index(request):
     questions =Question.objects.order_by("-pub_date")[:5]
-    output=", ".join([q.question for q in questions])
-    return HttpResponse(output)
+    q = {"questions": questions}
+    return render(request, "index.html",q)
 
 def detail(request, question_id):
     return HttpResponse('The question Id of the question is %s' %question_id)

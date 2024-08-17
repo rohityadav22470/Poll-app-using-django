@@ -7,7 +7,9 @@
 </head>
 <body>
     <ul>
-        <li><a href="/polls/{{ }}"/"> question</a></li>
+        {% for q in questions %}
+        <li><a href="/polls/{{q.id}}"/"> {{q.question}}</a></li>
+        {% endfor %}
     </ul>
 </body>
 </html>
