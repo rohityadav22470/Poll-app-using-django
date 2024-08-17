@@ -6,7 +6,7 @@
     <title><Details></Details></title>
 </head>
 <body>
-    <form action="{% url 'vote' question.id %}" method="POST">
+    <form action="{% url 'app:vote' question.id %}" method="POST">
         {% csrf_token %}
         <fieldset>
             <legend><h1>{{ question.question }}</h1></legend>

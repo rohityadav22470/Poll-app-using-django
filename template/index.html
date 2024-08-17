@@ -9,7 +9,7 @@
     {% if questions %}
     <ul>
         {% for q in questions %}
-        <li><a href="{% url 'detail' question.id %}"> {{q.question}}</a></li>
+        <li><a href="{% url 'app:detail' q.id  %}" > {{q.question}}</a></li>
         {% endfor %}
     </ul>
     {% else %}
