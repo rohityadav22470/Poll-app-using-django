@@ -1,0 +1,67 @@
+{% block start %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'polls/login.css' %}">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    /* background-color: seagreen; */
+    background: url("{% static 'images/img1.jpg' %}") no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+    </style>
+    <div class="wrapper">
+        <form action="login/" method="POST" >
+            <h1>Register</h1>
+            
+            {% if messages %}
+                <ul class="messages">
+                {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+            <div class="input">
+                <input type="text" placeholder="Enter Username" name="username" required>
+                <i class="bx bxs-user"></i>
+            </div>
+            <div class="input">
+                <input type="password" placeholder="Set password" name="password" required>
+                <i class="bx bxs-lock-alt"></i>
+            </div>
+            <div class="input">
+                <input type="text" placeholder="Enter First name" name="first_name" required>
+                <i class="bx bxs-user"></i>
+            </div>
+            <!-- <div class="remember">
+                <label><input type="checkbox">Remember me</input></label>
+                <a href="#">forgot password</a>
+            </div> -->
+            <div class="btn">
+                <button type="submit" class="btn">Register</button>
+            </div>
+            <div class="register">
+                <p>Already registered?
+                <a href="/login/">Login</a></p>
+                </div>
+
+        </form>
+        
+
+    </div>
+    
+</body>
+</html>
+{% endblock %}

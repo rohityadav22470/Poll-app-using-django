@@ -1,0 +1,53 @@
+{% block start %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'polls/login.css' %}">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    /* background-color: seagreen; */
+    background: url("{% static 'images/img1.jpg' %}") no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+    </style>
+    <div class="wrapper">
+        <form action="">
+            <h1>Login</h1>
+            <div class="input">
+                <input type="text" placeholder="Username" required>
+                <i class="bx bxs-user"></i>
+            </div>
+            <div class="input">
+                <input type="password" placeholder="password" required>
+                <i class="bx bxs-lock-alt"></i>
+            </div>
+            <!-- <div class="remember">
+                <label><input type="checkbox">Remember me</input></label>
+                <a href="#">forgot password</a>
+            </div> -->
+            <div class="btn">
+                <button type="submit" class="btn">Login</button>
+            </div>
+            <div class="register">
+                <p>Not registered yet?
+                <a href="/register/">Register</a></p>
+            </div>
+
+        </form>
+    </div>
+    
+</body>
+</html>
+{% endblock %}

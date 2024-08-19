@@ -1,11 +1,12 @@
-from django.shortcuts import render,get_object_or_404
+from django.shortcuts import render,redirect,get_object_or_404
 from django.http import HttpResponse, Http404, HttpResponseRedirect
 from .models import Question,choice
 from django.db.models import F
 from django.urls import reverse
 from django.views import generic
 from django.utils import timezone
-
+from django.contrib.auth.models import User
+from django.contrib import messages
 
 # Create your views here.
 # def index(request):
@@ -56,3 +57,28 @@ def vote(request, question_id):
         selected_choice.save()
     return HttpResponseRedirect(reverse('app:results', args=(question_id,)))
     
+    # User auth
+def login(request):
+     
+    return render(request,"login.html")
+
+def register(request):
+    if request.method=="POST":
+        username=request.POST["username"]
+        password=request.POST["password"]
+        person=request.POST["first_name"]
+        user=User.objects.filter(username=username)
+        if user.exists():
+            messages.error(request, "USERNAME ALREADY EXISTS. WRITE ANOTHER")
+            return redirect(request, "register.html")
+        
+        user=User.objects.create(
+            username=username,
+            first_name=person
+            )
+        
+        user.set_password(password) #for encrypted password
+        user.save()
+        messages.success(request, 'Account created successfully!')
+        return redirect(request,"login.html")
+    return render(request,"register.html")

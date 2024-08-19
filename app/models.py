@@ -1,9 +1,11 @@
 from django.db import models
 import datetime
+from django.contrib.auth.models import User
 from django.utils import timezone
 
 # Create your models here.
 class Question(models.Model):
+    user=models.ForeignKey(User, on_delete=models.SET_NULL, blank=True, null=True)
     question=models.CharField(max_length=200)
     pub_date=models.DateTimeField('date published')
     def __str__(self):
