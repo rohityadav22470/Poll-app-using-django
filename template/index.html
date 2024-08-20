@@ -10,6 +10,27 @@
         
     </head>
     <body>
+        <div>
+            {% if request.user.is_authenticated %}
+            <h1 ></h1><br>
+            <div class="container">
+                <nav class="navbar navbar-expand-lg bg-body-tertiary">
+                  <div class="container-fluid">
+                    <a class="navbar-brand" href="">Hii, {{ request.user }}</a><br>
+                  </div>
+                  <div class="btn">
+                    <a href="/"><button type="submit" class="btn" >Logout</button></a>
+                </div>
+                </nav>
+              </div>
+            {% else %}
+            <p>Welcome. Please login first</p>
+            <div class="btn">
+                <button type="submit" class="btn"  ><a href="login/">Login</a></button>
+            </div>
+            {% endif %}
+
+        </div>
     {% if questions %}
     <ul>
         {% for q in questions %}
